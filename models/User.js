@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: true
+        }
+      }
     },
     {
       underscored: true
@@ -20,14 +26,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   User.associate = models => {
-    User.hasOne(models.Cart, {
-      foreignKey: {
-        name: 'userId',
-        allowNull: false
-      },
-    });
+    User.hasOne(models.Cart);
   }
   
   return User
-
 }

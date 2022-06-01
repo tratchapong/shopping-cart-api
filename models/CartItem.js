@@ -12,18 +12,8 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   CartItem.associate = models => {
-    CartItem.hasOne(models.Product, {
-      foreignKey: {
-        name: 'productId',
-        allowNull: false
-      },
-    });
-
-    CartItem.belongsTo(models.Cart, {
-      foreignKey: {
-        name: 'cartId'
-      }
-    })
+    CartItem.belongsTo(models.Product);
+    CartItem.belongsTo(models.Cart)
   }
 
   return CartItem

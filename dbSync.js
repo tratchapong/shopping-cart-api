@@ -7,3 +7,4 @@ sequelize.sync({force: true}).then(()=>{
   console.log('\nDBSync have Error')
   process.exit(1)
 })
+

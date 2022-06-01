@@ -27,13 +27,15 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Product.associate = models => {
-    Product.belongsTo(models.CartItem, {
-      foreignKey: {
-        name: 'productId',
-        allowNull: false
-      },
-    });
+    Product.hasMany(models.CartItem);
   }
+  // Product.associate = models => {
+  //   Product.belongsTo(models.CartItem, {
+  //     foreignKey: {
+  //       name: 'productId'
+  //     },
+  //   });
+  // }
 
   return Product
 }
